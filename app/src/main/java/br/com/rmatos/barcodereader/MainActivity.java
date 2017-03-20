@@ -1,5 +1,6 @@
 package br.com.rmatos.barcodereader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.zxing.common.StringUtils;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -23,6 +28,7 @@ import br.com.rmatos.barcodereader.model.ProductModel;
 public class MainActivity extends AppCompatActivity implements OnProductListener {
 
     private ArrayList<ProductModel> products;
+    private ProductCreateFragment createFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +37,14 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        this.createFragment = null;
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProductCreateFragment fragment = new ProductCreateFragment();
-                replaceFragment(fragment);
+                createFragment = new ProductCreateFragment();
+                replaceFragment(createFragment);
             }
         });
 
@@ -75,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         fragment.setArguments(bundle);
 
         replaceFragment(fragment);
+
+        this.createFragment = null;
     }
 
     private void replaceFragment(Fragment fragment){
@@ -100,7 +110,26 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
     }
 
     @Override
-    public void afterBarcodeCapture(ProductModel model) {
+    public void barcodeCapture(ProductModel model) {
+        IntentIntegrator intent = new IntentIntegrator(MainActivity.this);
+        intent.initiateScan();
+    }
+
+    @Override
+    public void cancel() {
         createProductList();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null){
+            String barcode = result.getContents();
+            if (barcode != null && !"".equals(barcode)){
+                createFragment.setBarCode(barcode);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

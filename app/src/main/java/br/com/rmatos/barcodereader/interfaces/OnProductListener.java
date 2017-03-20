@@ -8,5 +8,6 @@ import br.com.rmatos.barcodereader.model.ProductModel;
 
 public interface OnProductListener {
     void beforeCreate(ProductModel model);
-    void afterBarcodeCapture(ProductModel model);
+    void barcodeCapture(ProductModel model);
+    void cancel();
 }
