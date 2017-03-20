@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/lblName"
+            android:text="Mouse Microsoft Wireless"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/lblPrice"
+            android:text="R$ 90,34"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imgCode"
+        android:src="@drawable/barcode_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblCode"
+        android:text="020202020202020202"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
