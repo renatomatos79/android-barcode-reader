@@ -10,3 +10,4 @@ https://www.youtube.com/watch?v=4czLIVDP8Zs&list=PL4G9uRWxf6dZVNFiNXch2NnVGa9KOM
 https://youtu.be/5EkE6QLNRFU
 
 # vídeo explicativo mostrando como o projeto foi desenvolvido
+https://youtu.be/LMnoKmRNRLg
