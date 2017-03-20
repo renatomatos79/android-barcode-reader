@@ -7,6 +7,6 @@ Também usei um Adapter Customizado por mim que foi explicado no detalhe no víd
 https://www.youtube.com/watch?v=4czLIVDP8Zs&list=PL4G9uRWxf6dZVNFiNXch2NnVGa9KOMBDk&index=15
 
 # vídeo de apresentação do projeto
-
+https://youtu.be/5EkE6QLNRFU
 
 # vídeo explicativo mostrando como o projeto foi desenvolvido
